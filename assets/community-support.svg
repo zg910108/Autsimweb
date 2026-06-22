@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" role="img" aria-labelledby="title desc">
+  <title id="title">多方协作支持儿童的科普插图</title>
+  <desc id="desc">家庭成员、教师和医疗工作者围绕儿童，旁边有日程板、积木和安静角标识。</desc>
+  <rect width="720" height="520" rx="24" fill="#e9f5f4"/>
+  <path d="M68 394c58-77 139-116 244-118 82-2 137-48 198-84 53-31 119-31 158 8 43 44 35 123-7 175-67 82-183 106-310 96-117-10-217 1-283-77Z" fill="#f8d99a"/>
+  <rect x="70" y="78" width="160" height="210" rx="12" fill="#fffdfa" stroke="#b9d4d1" stroke-width="4"/>
+  <rect x="94" y="105" width="112" height="24" rx="6" fill="#2d6f9f"/>
+  <rect x="94" y="150" width="48" height="42" rx="8" fill="#d8eef4"/>
+  <rect x="158" y="150" width="48" height="42" rx="8" fill="#fff0d0"/>
+  <rect x="94" y="210" width="48" height="42" rx="8" fill="#e7f2db"/>
+  <rect x="158" y="210" width="48" height="42" rx="8" fill="#ffe0d7"/>
+  <circle cx="358" cy="206" r="50" fill="#f2b58c"/>
+  <path d="M308 203c12-55 83-74 120-31 11 13 18 31 17 55-42 2-92-6-137-24Z" fill="#174e78"/>
+  <path d="M306 282c19-36 84-38 107 0l25 99H282l24-99Z" fill="#2d6f9f"/>
+  <path d="M324 314h73v88h-73z" fill="#fffdfa" opacity=".9"/>
+  <circle cx="214" cy="240" r="36" fill="#c98661"/>
+  <path d="M178 238c8-42 57-54 83-20 6 8 9 20 8 34-31 2-61-3-91-14Z" fill="#3f806c"/>
+  <path d="M178 289c16-28 62-30 79 0l21 82H156l22-82Z" fill="#3f806c"/>
+  <circle cx="508" cy="240" r="38" fill="#b97859"/>
+  <path d="M472 235c18-42 67-45 92-13 8 10 11 24 10 39-35 0-70-7-102-26Z" fill="#5c4416"/>
+  <path d="M468 292c18-31 67-32 86 0l22 88H445l23-88Z" fill="#d86b5f"/>
+  <circle cx="356" cy="336" r="34" fill="#9f6b50"/>
+  <path d="M324 334c14-35 58-43 80-11 6 9 9 20 8 33-30 0-59-7-88-22Z" fill="#17313a"/>
+  <path d="M318 381c16-24 58-25 75 0l16 58H302l16-58Z" fill="#e18b4b"/>
+  <rect x="516" y="90" width="110" height="76" rx="12" fill="#fffdfa" stroke="#b9d4d1" stroke-width="4"/>
+  <path d="M540 128h62M540 146h40" stroke="#2d6f9f" stroke-width="8" stroke-linecap="round"/>
+  <path d="M566 405h68v38h-68z" fill="#2d6f9f"/>
+  <path d="M588 366h68v38h-68z" fill="#3f806c"/>
+  <path d="M610 327h68v38h-68z" fill="#e18b4b"/>
+  <circle cx="139" cy="368" r="22" fill="#2d6f9f"/>
+  <path d="M128 367l8 8 17-20" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

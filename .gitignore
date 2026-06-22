@@ -1,0 +1,41 @@
+# Local workspace metadata
+.agents/
+.codex/
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*.tmp
+*.temp
+
+# Dependency and build output folders
+node_modules/
+dist/
+build/
+.cache/
+.parcel-cache/
+.vite/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Generated source images that are not used by the page.
+# Keep the optimized JPG/WebP assets that are referenced by index.html/script.js.
+assets/caregiver-mindful-breathing.png
+assets/first-diagnosis-consultation.png
+assets/happy-children.png
+assets/home-practice-mealtime.png
+assets/parent-reading-list.png
+assets/parent-resource-search.png
+assets/professional-assessment.png
+assets/professional-autism-wordcloud.png
+assets/professional-evidence-intervention.png
+assets/professional-guidelines.png
+assets/professional-resource-network.png
