@@ -221,6 +221,157 @@ summary:focus-visible,
   border-color: var(--blue-dark);
 }
 
+.primary-button {
+  min-height: 48px;
+  padding: 0.75rem 1.15rem;
+  color: #082034;
+  background: linear-gradient(135deg, #f3c767, #9bd7f2);
+  border-color: rgba(255, 255, 255, 0.36);
+  font-weight: 800;
+  box-shadow: 0 14px 30px rgba(0, 8, 18, 0.26);
+}
+
+.primary-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px rgba(0, 8, 18, 0.34);
+}
+
+.guide-page {
+  min-height: calc(100vh - 184px);
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  align-items: center;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  color: #f4fbff;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(155, 215, 242, 0.26), transparent 26%),
+    radial-gradient(circle at 82% 20%, rgba(243, 199, 103, 0.2), transparent 24%),
+    linear-gradient(145deg, #071b2d 0%, #123754 54%, #102f49 100%);
+  border: 1px solid rgba(155, 215, 242, 0.24);
+  border-radius: 18px;
+  box-shadow: 0 24px 54px rgba(0, 8, 18, 0.32);
+}
+
+.guide-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.92) 0 1px, transparent 1.7px),
+    radial-gradient(circle, rgba(155, 215, 242, 0.72) 0 1px, transparent 1.6px);
+  background-position: 0 0, 34px 42px;
+  background-size: 82px 82px, 126px 126px;
+  opacity: 0.42;
+}
+
+.guide-page::after {
+  content: "";
+  position: absolute;
+  inset: auto -12% -42% 18%;
+  height: 60%;
+  background: radial-gradient(ellipse, rgba(95, 179, 222, 0.18), transparent 66%);
+  transform: rotate(-7deg);
+}
+
+.guide-stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.guide-star {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  background: #f8fdff;
+  clip-path: polygon(50% 0, 62% 37%, 100% 50%, 62% 63%, 50% 100%, 38% 63%, 0 50%, 38% 37%);
+  filter: drop-shadow(0 0 12px rgba(155, 215, 242, 0.9));
+  animation: guideStarPulse 3.8s ease-in-out infinite;
+}
+
+.guide-star-large {
+  width: 26px;
+  height: 26px;
+  right: 13%;
+  top: 18%;
+}
+
+.guide-star-medium {
+  width: 16px;
+  height: 16px;
+  left: 11%;
+  bottom: 20%;
+  animation-delay: 0.7s;
+}
+
+.guide-star-small {
+  right: 26%;
+  bottom: 28%;
+  animation-delay: 1.3s;
+}
+
+.guide-copy {
+  position: relative;
+  z-index: 1;
+  max-width: 920px;
+}
+
+.guide-copy .eyebrow {
+  color: #b8eadf;
+}
+
+.guide-copy h1 {
+  margin: 0 0 clamp(1rem, 2.4vw, 1.8rem);
+  font-size: clamp(2rem, 4.5vw, 4.2rem);
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+.guide-lines {
+  display: grid;
+  gap: clamp(0.45rem, 1.1vw, 0.75rem);
+  max-width: 860px;
+}
+
+.guide-lines p {
+  margin: 0;
+  color: #e7f4fa;
+  font-size: clamp(1rem, 1.85vw, 1.22rem);
+  line-height: 1.58;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: guideLineIn 720ms ease both;
+  animation-delay: calc(var(--line-index) * 620ms + 200ms);
+}
+
+.guide-start-button {
+  margin-top: clamp(1.15rem, 2.4vw, 1.8rem);
+  opacity: 0;
+  transform: translateY(12px);
+  animation: guideLineIn 720ms ease both;
+  animation-delay: 4.9s;
+}
+
+@keyframes guideLineIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes guideStarPulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(0.88);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.14);
+  }
+}
+
 .intro-band {
   width: min(1180px, calc(100% - 32px));
   min-height: 280px;
@@ -1569,6 +1720,11 @@ details p {
 }
 
 @media (max-width: 900px) {
+  .guide-page {
+    min-height: auto;
+    padding: 2rem;
+  }
+
   .intro-band {
     grid-template-columns: 1fr;
     padding: 1.5rem;
@@ -1681,6 +1837,19 @@ details p {
 }
 
 @media (max-width: 520px) {
+  .guide-page {
+    padding: 1.4rem;
+    border-radius: 12px;
+  }
+
+  .guide-lines {
+    gap: 0.55rem;
+  }
+
+  .guide-lines p {
+    line-height: 1.68;
+  }
+
   .first-step-image,
   .home-practice-image,
   .caregiver-care-image,

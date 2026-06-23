@@ -1074,6 +1074,16 @@ const homeButton = document.querySelector("[data-home]");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 let currentAudience = "";
 
+const guideLines = [
+  "在浩瀚星河中，总有独特的星光需要被温柔注视",
+  "孤独症（又称自闭症），全称“孤独症谱系障碍”。",
+  "一个曾经陌生，如今却不断出现在大众视野的障碍名称。",
+  "自1943年首次被医学界报告出来，历经80余年的认识和探索，",
+  "其发病机制仍不甚明确，社会大众更是对其有着许多误解。",
+  "因为他们常常显得与这个世界格格不入，而被称作“星星的孩子”。",
+  "现在让我们一起走近他们。",
+];
+
 function setActiveAudience(audience) {
   navButtons.forEach((button) => {
     const isActive = button.dataset.audience === audience;
@@ -1086,6 +1096,35 @@ function restartAnimation() {
   content.classList.remove("fade-in");
   void content.offsetWidth;
   content.classList.add("fade-in");
+}
+
+function renderGuide() {
+  currentAudience = "";
+  setActiveAudience("");
+  content.innerHTML = `
+    <section class="guide-page" aria-labelledby="guide-title">
+      <div class="guide-stars" aria-hidden="true">
+        <span class="guide-star guide-star-large"></span>
+        <span class="guide-star guide-star-medium"></span>
+        <span class="guide-star guide-star-small"></span>
+      </div>
+      <div class="guide-copy">
+        <p class="eyebrow">Autism Spectrum Knowledge Portal</p>
+        <h1 id="guide-title">走近星星的孩子</h1>
+        <div class="guide-lines">
+          ${guideLines
+            .map(
+              (line, index) => `
+                <p style="--line-index: ${index};">${line}</p>
+              `
+            )
+            .join("")}
+        </div>
+        <button class="primary-button guide-start-button" type="button" data-start-journey>开启认识之旅</button>
+      </div>
+    </section>
+  `;
+  restartAnimation();
 }
 
 function renderWelcome() {
@@ -1242,6 +1281,13 @@ navButtons.forEach((button) => {
 });
 
 content.addEventListener("click", (event) => {
+  const startButton = event.target.closest("[data-start-journey]");
+  if (startButton && content.contains(startButton)) {
+    renderWelcome();
+    content.scrollIntoView({ block: "start", behavior: prefersReducedMotion ? "auto" : "smooth" });
+    return;
+  }
+
   const entryButton = event.target.closest("[data-entry]");
   if (entryButton && content.contains(entryButton)) {
     renderAudience(entryButton.dataset.entry);
@@ -1289,3 +1335,5 @@ homeButton.addEventListener("click", (event) => {
   event.preventDefault();
   renderWelcome();
 });
+
+renderGuide();
