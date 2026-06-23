@@ -23,34 +23,40 @@
     <meta property="og:image" content="assets/happy-children-900.webp" />
     <meta property="og:site_name" content="孤独症科普导航" />
     <link rel="preload" as="image" href="assets/happy-children-900.webp" fetchpriority="high" />
-    <link rel="stylesheet" href="styles.css?v=20260620-polish" />
-    <script src="script.js?v=20260620-polish" defer></script>
+    <link rel="stylesheet" href="styles.css?v=20260623-guide" />
+    <script src="script.js?v=20260623-guide" defer></script>
   </head>
-  <body>
+  <body class="is-guide-active">
     <header class="site-header">
       <a class="skip-link" href="#main-content">跳到主要内容</a>
       <nav class="top-nav" aria-label="主要入口">
-        <a class="brand" href="#main-content" data-home title="返回欢迎页">
-          <span class="brand-star" aria-hidden="true">
-            <svg class="brand-star-svg" viewBox="0 0 100 100" focusable="false">
-              <defs>
-                <linearGradient id="brandStarGradient" x1="20" y1="14" x2="82" y2="90" gradientUnits="userSpaceOnUse">
-                  <stop offset="0" stop-color="#d9f4ff" />
-                  <stop offset="0.5" stop-color="#5fb3de" />
-                  <stop offset="1" stop-color="#1d6b99" />
-                </linearGradient>
-              </defs>
-              <path
-                class="brand-star-shape"
-                d="M50 8c3.2 0 5.9 2 7.1 5l7.5 18.4c1 2.3 3.1 3.9 5.6 4.1l19.8 1.7c6.8.6 9.5 9 4.3 13.4L79.1 63.4c-1.9 1.6-2.7 4.2-2.1 6.6l4.6 19.4c1.6 6.6-5.6 11.8-11.4 8.2L53.3 87.1c-2.1-1.3-4.8-1.3-6.8 0L29.6 97.6c-5.8 3.6-13-1.6-11.4-8.2L22.8 70c.6-2.4-.2-5-2.1-6.6L5.5 50.6c-5.2-4.4-2.5-12.8 4.3-13.4l19.8-1.7c2.5-.2 4.6-1.8 5.6-4.1L42.9 13c1.2-3 3.9-5 7.1-5Z"
-              />
-            </svg>
-          </span>
-          <span>
-            <strong>孤独症科普导航</strong>
-            <small>分层知识门户</small>
-          </span>
-        </a>
+        <div class="brand-cluster">
+          <a class="brand" href="#main-content" data-home title="返回欢迎页">
+            <span class="brand-star" aria-hidden="true">
+              <svg class="brand-star-svg" viewBox="0 0 100 100" focusable="false">
+                <defs>
+                  <linearGradient id="brandStarGradient" x1="20" y1="14" x2="82" y2="90" gradientUnits="userSpaceOnUse">
+                    <stop offset="0" stop-color="#d9f4ff" />
+                    <stop offset="0.5" stop-color="#5fb3de" />
+                    <stop offset="1" stop-color="#1d6b99" />
+                  </linearGradient>
+                </defs>
+                <path
+                  class="brand-star-shape"
+                  d="M50 8c3.2 0 5.9 2 7.1 5l7.5 18.4c1 2.3 3.1 3.9 5.6 4.1l19.8 1.7c6.8.6 9.5 9 4.3 13.4L79.1 63.4c-1.9 1.6-2.7 4.2-2.1 6.6l4.6 19.4c1.6 6.6-5.6 11.8-11.4 8.2L53.3 87.1c-2.1-1.3-4.8-1.3-6.8 0L29.6 97.6c-5.8 3.6-13-1.6-11.4-8.2L22.8 70c.6-2.4-.2-5-2.1-6.6L5.5 50.6c-5.2-4.4-2.5-12.8 4.3-13.4l19.8-1.7c2.5-.2 4.6-1.8 5.6-4.1L42.9 13c1.2-3 3.9-5 7.1-5Z"
+                />
+              </svg>
+            </span>
+            <span>
+              <strong>孤独症科普导航</strong>
+              <small>分层知识门户</small>
+            </span>
+          </a>
+          <button class="music-toggle" type="button" data-music-toggle aria-pressed="false" title="播放背景音乐">
+            <span class="music-toggle-dot" aria-hidden="true"></span>
+            <span data-music-label>音乐</span>
+          </button>
+        </div>
 
         <ul class="nav-actions">
           <li><button class="nav-button" type="button" data-audience="public">社会公众</button></li>
@@ -70,7 +76,6 @@
               <span class="guide-star guide-star-small"></span>
             </div>
             <div class="guide-copy">
-              <p class="eyebrow">Autism Spectrum Knowledge Portal</p>
               <h1 id="guide-title">走近星星的孩子</h1>
               <div class="guide-lines">
                 <p style="--line-index: 0;">在浩瀚星河中，总有独特的星光需要被温柔注视</p>
@@ -92,5 +97,6 @@
       <p>© 2026 孤独症科普信息门户</p>
       <p>免责声明：本站内容仅供科普参考，不替代专业诊断、治疗建议或当地政策审核。</p>
     </footer>
+    <audio id="background-music" src="assets/background-music.mp3" preload="auto" loop></audio>
   </body>
 </html>

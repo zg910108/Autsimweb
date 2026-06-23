@@ -1015,6 +1015,17 @@ const panelContent = {
 
 const parentBookModuleIndex = panelContent.parents.findIndex((module) => module.title === "推荐书籍清单");
 const parentResourceModuleIndex = panelContent.parents.findIndex((module) => module.title === "专业资源链接");
+const publicCareModuleIndex = panelContent.public.findIndex((module) => module.title === "关爱行动");
+const publicFilmModuleIndex = panelContent.public.findIndex((module) => module.title === "影视印象");
+
+if (
+  publicCareModuleIndex >= 0 &&
+  publicFilmModuleIndex >= 0 &&
+  publicCareModuleIndex < publicFilmModuleIndex
+) {
+  const [filmModule] = panelContent.public.splice(publicFilmModuleIndex, 1);
+  panelContent.public.splice(publicCareModuleIndex, 0, filmModule);
+}
 
 if (
   parentBookModuleIndex >= 0 &&
@@ -1071,8 +1082,12 @@ const entryIcons = {
 const content = document.querySelector("#audience-content");
 const navButtons = document.querySelectorAll("[data-audience]");
 const homeButton = document.querySelector("[data-home]");
+const music = document.querySelector("#background-music");
+const musicButton = document.querySelector("[data-music-toggle]");
+const musicLabel = document.querySelector("[data-music-label]");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 let currentAudience = "";
+let musicEnabled = false;
 
 const guideLines = [
   "在浩瀚星河中，总有独特的星光需要被温柔注视",
@@ -1083,6 +1098,41 @@ const guideLines = [
   "因为他们常常显得与这个世界格格不入，而被称作“星星的孩子”。",
   "现在让我们一起走近他们。",
 ];
+
+function setGuideMode(isActive) {
+  document.body.classList.toggle("is-guide-active", isActive);
+}
+
+function updateMusicButton() {
+  if (!musicButton || !musicLabel || !music) return;
+
+  const isPlaying = !music.paused;
+  musicButton.classList.toggle("is-playing", isPlaying);
+  musicButton.setAttribute("aria-pressed", String(isPlaying));
+  musicButton.setAttribute("title", isPlaying ? "关闭背景音乐" : "播放背景音乐");
+  musicLabel.textContent = isPlaying ? "关闭音乐" : "播放音乐";
+}
+
+function playBackgroundMusic() {
+  if (!music) return;
+
+  musicEnabled = true;
+  music.volume = 0.22;
+  const playPromise = music.play();
+  if (playPromise) {
+    playPromise.then(updateMusicButton).catch(updateMusicButton);
+  } else {
+    updateMusicButton();
+  }
+}
+
+function pauseBackgroundMusic() {
+  if (!music) return;
+
+  musicEnabled = false;
+  music.pause();
+  updateMusicButton();
+}
 
 function setActiveAudience(audience) {
   navButtons.forEach((button) => {
@@ -1100,6 +1150,7 @@ function restartAnimation() {
 
 function renderGuide() {
   currentAudience = "";
+  setGuideMode(true);
   setActiveAudience("");
   content.innerHTML = `
     <section class="guide-page" aria-labelledby="guide-title">
@@ -1109,7 +1160,6 @@ function renderGuide() {
         <span class="guide-star guide-star-small"></span>
       </div>
       <div class="guide-copy">
-        <p class="eyebrow">Autism Spectrum Knowledge Portal</p>
         <h1 id="guide-title">走近星星的孩子</h1>
         <div class="guide-lines">
           ${guideLines
@@ -1129,11 +1179,12 @@ function renderGuide() {
 
 function renderWelcome() {
   currentAudience = "";
+  setGuideMode(false);
   setActiveAudience("");
   content.innerHTML = `
     <section class="intro-band welcome-intro" aria-labelledby="page-title">
       <div class="intro-copy">
-        <p class="eyebrow">Autism Spectrum Knowledge Portal</p>
+        <p class="eyebrow">一场走近星星的温柔旅程</p>
         <h1 id="page-title">科学、接纳、赋能</h1>
         <p class="intro-slogan">守护星星的孩子</p>
         <p class="intro-subtitle">构建理解的桥梁，让爱不再孤单</p>
@@ -1283,6 +1334,7 @@ navButtons.forEach((button) => {
 content.addEventListener("click", (event) => {
   const startButton = event.target.closest("[data-start-journey]");
   if (startButton && content.contains(startButton)) {
+    playBackgroundMusic();
     renderWelcome();
     content.scrollIntoView({ block: "start", behavior: prefersReducedMotion ? "auto" : "smooth" });
     return;
@@ -1334,6 +1386,21 @@ content.addEventListener("keydown", (event) => {
 homeButton.addEventListener("click", (event) => {
   event.preventDefault();
   renderWelcome();
+  if (musicEnabled) {
+    playBackgroundMusic();
+  }
 });
+
+musicButton?.addEventListener("click", () => {
+  if (!music || music.paused) {
+    playBackgroundMusic();
+  } else {
+    pauseBackgroundMusic();
+  }
+});
+
+music?.addEventListener("play", updateMusicButton);
+music?.addEventListener("pause", updateMusicButton);
+updateMusicButton();
 
 renderGuide();
